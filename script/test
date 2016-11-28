@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+cd "$(dirname "$0")/.."
+
+./node_modules/.bin/http-server test/mock/app/ --silent &
+WEBSERVER_PID=$!
+
+./node_modules/.bin/wdio lib/config.js
+
+trap "kill $WEBSERVER_PID" SIGINT SIGTERM EXIT

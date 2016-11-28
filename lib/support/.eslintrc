@@ -1,0 +1,7 @@
+{
+  "globals": {
+    "browser": false,
+    "expect": false,
+    "assert": false
+  }
+}
