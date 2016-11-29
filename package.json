@@ -1,5 +1,5 @@
 {
-  "name": "webdriverio-cucumber",
+  "name": "wdio-cucumber-utilities",
   "version": "0.0.1",
   "description": "Simple configuration and step definitions for Cucumber.js and Webdriver.io",
   "main": "index.js",
