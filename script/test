@@ -5,7 +5,12 @@ cd "$(dirname "$0")/.."
 
 ./node_modules/.bin/http-server test/mock/app/ --silent &
 WEBSERVER_PID=$!
+WDIO_CONFIG="config/wdio.config.js"
 
-./node_modules/.bin/wdio lib/config.js
+if [ "$CI" = true ]; then
+  WDIO_CONFIG="config/wdio.config.ci.js"
+fi
+
+./node_modules/.bin/wdio $WDIO_CONFIG
 
 trap "kill $WEBSERVER_PID" SIGINT SIGTERM EXIT
