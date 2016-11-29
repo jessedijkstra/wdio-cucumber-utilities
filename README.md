@@ -1,19 +1,9 @@
-Cucumber Boilerplate [![Build Status](https://travis-ci.org/webdriverio/cucumber-boilerplate.svg?branch=master)](https://travis-ci.org/webdriverio/cucumber-boilerplate) [![Dependency Status](https://david-dm.org/webdriverio/cucumber-boilerplate.svg)](https://david-dm.org/webdriverio/cucumber-boilerplate) [![devDependency Status](https://david-dm.org/webdriverio/cucumber-boilerplate/dev-status.svg)](https://david-dm.org/webdriverio/cucumber-boilerplate/?type=dev) [![Code Climate](https://codeclimate.com/github/webdriverio/cucumber-boilerplate/badges/gpa.svg)](https://codeclimate.com/github/webdriverio/cucumber-boilerplate) [![Test Coverage](https://codeclimate.com/github/webdriverio/cucumber-boilerplate/badges/coverage.svg)](https://codeclimate.com/github/webdriverio/cucumber-boilerplate/coverage)
+Utility configuration and functions for Cucumber and WebdriverIO that can be used
+when writing acceptance test for web applications.
 
-====================
-
-Boilerplate project to run WebdriverIO tests with [Cucumber](https://cucumber.io/) and brings **true** [BDD](http://en.wikipedia.org/wiki/Behavior-driven_development) to JavaScript. Instead of writing complicated test code that only developers can understand, Cucumber maps an ordinary language to code and allows to start with the test process in the early stages of your product development.
-
-# Quick start
-
-Choose one of the following options:
-
-1. Download the latest stable release [here](https://github.com/webdriverio/cucumber-boilerplate/archive/master.zip) or
-2. Clone the git repo — `git clone https://github.com/webdriverio/cucumber-boilerplate.git`
-
-Then just embed the test directory into the root folder of your project and copy/install the [necessary dependencies
-from the package.json](https://github.com/webdriverio/cucumber-boilerplate/blob/master/package.json)
-file and you are all set.
+This project is a port of the [Cucumber Boilerplate](https://github.com/webdriverio/cucumber-boilerplate/)
+developed by [Christian Broman](https://github.com/christian-bromann) to the NPM
+package and aims to create a easily reusable setup.
 
 ## Features
 
@@ -54,53 +44,19 @@ This test opens the browser and navigates them to google.com to check if the tit
 query after doing a search. As you can see, it is pretty simple and understandable for everyone.
 
 # How to run the test
+Create wdio.conf.js and import the wdio config from the NPM package:
 
-Start the local web server:
+```
+import { config } from 'wdio-cucumber-utilities/lib/config';
 
-```sh
-$ npm run-script local-webserver
+export config;
 ```
 
-To run your tests just call the [WDIO runner](http://webdriver.io/guide/testrunner/gettingstarted.html):
-
-```sh
-$ wdio
-```
-
-_please note_ The WDIO runner uses the configuration file `wdio.conf.js` by default.
+Now run `wdio` and it will run any features that are present in the `test/features/` directory.
 
 # Configurations
 
-To configure your tests, checkout the [`wdio.conf.js`](https://github.com/webdriverio/cucumber-boilerplate/blob/master/wdio.conf.js) file in your test directory. It comes with a bunch of documented options you can choose from.
-
-## Environment-specific configurations
-
-You can setup multiple configs for specific environments. Let's say you want to have a different `baseUrl` for
-your local and pre-deploy tests. Use the `wdio.conf.js` to set all general configs (like mochaOpts) that don't change.
-They act as default values. For each different environment you can create a new config with the following name
-scheme:
-
-```txt
-wdio.<ENVIRONMENT>.conf.js
-```
-
-Now you can create a specific config for your pre-deploy tests:
-
-__wdio.STAGING.conf.js__
-```js
-var config = require('./wdio.conf.js').config;
-
-config.baseUrl = 'http://staging.example.com'
-
-exports.config = config;
-```
-
-Your environment-specific config file will get merged into the default config file and overwrites the values you set.
-To run a test in a specific environment just add the desired configuration file as the first parameter:
-
-```sh
-$ wdio wdio.STAGING.conf.js
-```
+To configure your tests, checkout the [`config.js`](https://github.com/jessedijkstra/wdio-cucumber-utilities) file in your test directory. It comes with a bunch of documented options you can choose from.
 
 # Running single feature
 Sometimes its usefull to only execute a single feature file, to do so use the following command:
@@ -108,7 +64,6 @@ Sometimes its usefull to only execute a single feature file, to do so use the fo
 ```sh
 $ wdio --spec ./test/features/select.feature
 ```
-
 
 # Using tags
 
@@ -142,10 +97,16 @@ Scenario: ...
 ```
 
 # Adding new steps and snippets
+wdio cucumber utitilies comes with a predefined set of utility functions. You can add or override
+utility functions by overriding or extending `cucumberOpts.require` and adding your own paths.
 
-The predefined snippets allow you to do a lot of common things but you might need extra snippets which
-are better aligned with your aims. To do so you will find all step definitions in `./test/steps`. They
-are separated in `given`, `when` and `then`. 
+```
+import { config } from 'wdio-cucumber-utilities/lib/config';
+
+config.cucumberOpts.require = ['tests/steps/myOwnSteps.js'].concat(config.cucumberOpts.require);
+
+export config;
+```
 
 You define your snippet using regular expressions. This is pretty powerful as it allows you to create complex
 sentences with multiple options. Everything that's within `"([^"]*)?"` gets captured and appended to the
