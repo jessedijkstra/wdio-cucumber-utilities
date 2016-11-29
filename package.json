@@ -7,6 +7,9 @@
     "url": "https://github.com/jessedijkstra/wdio-cucumber-utilities.git",
     "type": "git"
   },
+  "engines" : {
+    "node" : ">=6.9.1"
+  },
   "scripts": {
     "test": "script/test"
   },
