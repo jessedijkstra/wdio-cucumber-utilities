@@ -1885,6 +1885,10 @@ selenium-standalone, selenium-standalone@^5.6.0:
     which "1.1.1"
     yauzl "^2.5.0"
 
+semver:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
+
 sentence-case@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/sentence-case/-/sentence-case-2.1.0.tgz#d592fbed457fd1a59e3af0ee17e99f6fd70d7efd"

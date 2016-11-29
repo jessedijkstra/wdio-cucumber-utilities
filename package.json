@@ -3,17 +3,28 @@
   "version": "0.0.1",
   "description": "Simple configuration and step definitions for Cucumber.js and Webdriver.io",
   "main": "index.js",
+  "keywords": [
+    "wdio",
+    "webdriver",
+    "cucumber",
+    "BDD"
+  ],
   "repository": {
     "url": "https://github.com/jessedijkstra/wdio-cucumber-utilities.git",
     "type": "git"
   },
-  "engines" : {
-    "node" : ">=6.9.1"
+  "engines": {
+    "node": ">=6.9.1"
   },
   "scripts": {
     "test": "script/test"
   },
   "author": "Jesse Dijkstra <mail@jessedijkstra.nl>",
+  "contributors": [
+    "Christian Bromann <christian@saucelabs.com>"
+  ],
+  "homepage": "https://github.com/jessedijkstra/wdio-cucumber-utilities",
+  "bugs": "https://github.com/jessedijkstra/wdio-cucumber-utilities/issues",
   "license": "MIT",
   "dependencies": {
     "chai": "^3.5.0",
@@ -30,6 +41,7 @@
     "eslint-config-airbnb-base": "^10.0.1",
     "eslint-plugin-import": "^2.2.0",
     "http-server": "^0.9.0",
-    "selenium-standalone": "^5.8.0"
+    "selenium-standalone": "^5.8.0",
+    "semver": "^5.3.0"
   }
 }

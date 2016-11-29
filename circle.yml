@@ -10,6 +10,7 @@ dependencies:
 
   pre:
     - yarn --version
+    - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
 
   override:
     - script/update
@@ -17,3 +18,10 @@ dependencies:
 test:
   override:
     - script/test
+
+deployment:
+  release:
+    tag: /v[0-9]+(\.[0-9]+)*/
+    owner: jessedijkstra
+    commands:
+      - script/deploy
