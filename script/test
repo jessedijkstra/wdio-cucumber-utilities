@@ -4,8 +4,7 @@ set -e
 cd "$(dirname "$0")/.."
 
 ./node_modules/.bin/http-server test/mock/app/ --silent &
-HTTP_SERVER_PID=$!
-trap "kill $HTTP_SERVER_PID 2> /dev/null" SIGTERM EXIT
+trap "trap - SIGTERM 2> /dev/null && kill -- -$$ 2> /dev/null" INT TERM EXIT
 
 WDIO_CONFIG="./config/wdio.config.js"
 
