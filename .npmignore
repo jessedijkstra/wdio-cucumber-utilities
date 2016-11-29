@@ -1,0 +1,7 @@
+config/
+script/
+test/
+.eslintrc
+.editorconfig
+.nvmrc
+circle.yml
