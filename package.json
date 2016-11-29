@@ -7,6 +7,9 @@
     "url": "https://github.com/jessedijkstra/webdriverio-cucumber.git",
     "type": "git"
   },
+  "scripts": {
+    "test": "script/test"
+  },
   "author": "Jesse Dijkstra <mail@jessedijkstra.nl>",
   "license": "MIT",
   "dependencies": {
