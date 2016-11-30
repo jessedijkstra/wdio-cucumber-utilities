@@ -1,7 +1,9 @@
 #!/bin/sh
 
-NPM_PACKAGE_VERSION=$(semver $(node -p -e "require('./package.json').version"))
-GIT_TAG_VERSION=$(semver $(git describe --tags || echo "0.0.0"))
+SEMVER='./node_modules/.bin/semver'
+
+NPM_PACKAGE_VERSION=$($SEMVER $(node -p -e "require('./package.json').version"))
+GIT_TAG_VERSION=$($SEMVER $(git describe --tags || echo "0.0.0"))
 
 if [ $NPM_PACKAGE_VERSION != $GIT_TAG_VERSION ]; then
   echo "Error: NPM package version $NPM_PACKAGE_VERSION does not match the GIT tag version $GIT_TAG_VERSION"
