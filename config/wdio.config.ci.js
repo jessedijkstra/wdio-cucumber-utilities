@@ -1,4 +1,4 @@
-const { config } = require('../lib/config');
+const config = require('../lib');
 
 config.maxInstances = 4;
 
