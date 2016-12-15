@@ -3,7 +3,9 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-./node_modules/.bin/http-server test/mock/app/ --silent &
+scripts/cibuild
+
+http-server test/mock/app/ --silent &
 trap "trap - SIGTERM 2> /dev/null && kill -- -$$ 2> /dev/null" INT TERM EXIT
 
 WDIO_CONFIG="./config/wdio.config.js"
@@ -18,4 +20,4 @@ if [ "$1" != "" ]; then
   PARAMETERS="--spec $1"
 fi
 
-./node_modules/.bin/wdio $WDIO_CONFIG $PARAMETERS
+wdio $WDIO_CONFIG $PARAMETERS
