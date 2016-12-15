@@ -1,6 +1,9 @@
+node_modules/
+errorShots/
 config/
-script/
+scripts/
 test/
+src/
 .eslintrc
 .editorconfig
 .nvmrc

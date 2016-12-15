@@ -2,7 +2,7 @@
   "name": "wdio-cucumber-utilities",
   "version": "0.0.1",
   "description": "Simple configuration and step definitions for Cucumber.js and Webdriver.io",
-  "main": "index.js",
+  "main": "lib/index.js",
   "keywords": [
     "wdio",
     "webdriver",
@@ -14,10 +14,10 @@
     "type": "git"
   },
   "engines": {
-    "node": ">=6.9.1"
+    "node": ">=4.1.2"
   },
   "scripts": {
-    "test": "script/test"
+    "test": "scripts/test"
   },
   "author": "Jesse Dijkstra <mail@jessedijkstra.nl>",
   "contributors": [
@@ -32,15 +32,19 @@
     "wdio-cucumber-framework": "^0.2.12",
     "wdio-mocha-framework": "^0.5.4",
     "wdio-phantomjs-service": "^0.2.2",
-    "wdio-selenium-standalone-service": "^0.0.7",
     "wdio-spec-reporter": "^0.0.3",
     "webdriverio": "^4.4.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-es2016": "^6.16.0",
+    "babel-preset-es2017": "^6.16.0",
     "eslint": "^3.11.0",
     "eslint-config-airbnb-base": "^10.0.1",
     "eslint-plugin-import": "^2.2.0",
     "http-server": "^0.9.0",
-    "selenium-standalone": "^5.8.0"
+    "selenium-standalone": "^5.8.0",
+    "wdio-selenium-standalone-service": "^0.0.7"
   }
 }
